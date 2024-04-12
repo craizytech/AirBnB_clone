@@ -1,1 +1,1 @@
-This folder contains the html css part
+This folder contains the AirBnB web static implementation.
