@@ -9,13 +9,13 @@ class BaseModel:
 
     def __init__(self):
         """This is the constructor method of the class."""
-        self.id = uuid.uuid4()
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now().isoformat()
         self.updated_at = None
 
     def __str__(self):
         """Prints the representation of the object."""
-        return f"[Base] ({self.id}) {self.__dict__}"
+        return f"[BaseModel] ({self.id}) {self.__dict__}"
 
     def save(self):
         """Updates the updated_at with current datetime."""
