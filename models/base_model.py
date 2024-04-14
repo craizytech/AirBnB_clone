@@ -10,8 +10,8 @@ class BaseModel:
     def __init__(self):
         """This is the constructor method of the class."""
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now().isoformat()
-        self.updated_at = None
+        self.created_at = str(datetime.datetime.now().isoformat())
+        self.updated_at = str(datetime.datetime.now().isoformat())
 
     def __str__(self):
         """Prints the representation of the object."""
