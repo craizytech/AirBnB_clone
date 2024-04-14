@@ -15,6 +15,8 @@ class TestBaseModel(unittest.TestCase):
     def test_uuid(self):
         """This method tests the id attribute."""
         self.assertIsInstance(self.obj1, BaseModel)
+        self.assertTrue(hasattr(self.obj1, "id"))
+        self.asserIsInstance(self.obj1.id, str)
         self.assertNotEqual(self.obj1.id, self.obj2.id)
 
     def str_method(self):
