@@ -25,4 +25,6 @@ class BaseModel:
         """Returns a dictionary containing the attributes of the class."""
         dict_object = self.__dict__
         dict_object['__class__'] = BaseModel.__name__
+        dict_object['created_at'] = self.created_at.isoformat()
+        dict_object['updated_at'] = self.updated_at.isoformat()
         return dict_object
