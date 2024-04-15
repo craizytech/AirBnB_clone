@@ -3,6 +3,7 @@
 import uuid
 import json
 import datetime
+from models import storage
 
 class BaseModel:
     """This is the base class that all the other classes inherit from."""
@@ -24,6 +25,7 @@ class BaseModel:
                 if k == 'created_at' or k == 'updated_at':
                     v = datetime.datetime.fromisoformat(v)
                 self.__dict__[k] = v
+            storage.new(self)
 
     def __str__(self):
         """Prints the representation of the object."""
@@ -32,6 +34,7 @@ class BaseModel:
     def save(self):
         """Updates the updated_at with current datetime."""
         self.updated_at = datetime.datetime.now()
+        storage.save(self)
 
     def to_dict(self):
         """Returns a dictionary containing the attributes of the class."""
