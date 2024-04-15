@@ -3,7 +3,7 @@
 import uuid
 import json
 import datetime
-from models import storage
+from . import storage
 
 class BaseModel:
     """This is the base class that all the other classes inherit from."""
