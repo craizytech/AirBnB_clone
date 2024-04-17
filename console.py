@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Console module of the HAirBnB module."""
 import cmd
+import json
+#from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -10,11 +12,22 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """This method implements the quit command."""
         return True
+
     def do_EOF(self, line):
         """Indicates the EOF."""
         return True
+
     def emptyline(self):
         pass
+
+    def do_create(self, line):
+        """creates an instance of the base model."""
+        if line == '':
+            print("** class name missing **")
+        elif line == "BaseModel":
+            pass
+        else:
+            print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

@@ -11,23 +11,41 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects."""
-        return FileStorage.__objects
 
+        return FileStorage.__objects
+    
     def new(self, obj):
-        """stores the object with key <obj class name>.id"""
-        obj_name = f"{obj.__class__.__name__}.{obj.id}"
-        FileStorage.__objects[obj_name] = obj
+        key = f"{obj.__class__.__name__}.{obj.id}"
+
+        FileStorage.__objects[key]= obj
 
     def save(self):
-        """serializes __objects to the JSON filepath only if file exists."""
-        odict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in odict.keys()}
-        with open(FileStorage.__file_path, 'w', encoding="utf-8") as file:
-            json.dump(objdict, file)
+
+        dic_rep = { key:FileStorage.__objects[key].to_dict() for key in FileStorage.__objects.keys()}
+
+        with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
+
+            try:
+                
+                json.dump(dic_rep,file)
+            except json.JSONEncoder:
+
+                pass
+        print(dic_rep)
 
     def reload(self):
-        """deserializes the JSON file to __objects."""
-        if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r', encoding="utf-8") as file:
-                FileStorage.__objects = json.load(file)
+
+        if os.path.exists(FileStorage.__file_path):
+
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
+
+                try:
+                    from models.base_model import BaseModel
+
+                    json_dict = json.load(file)
+
+                    FileStorage.__objects = {key:BaseModel(**value) for key, value in json_dict.items()}
+
+                except json.JSONDecodeError:
+                    pass
+
