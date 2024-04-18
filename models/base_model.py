@@ -3,6 +3,7 @@
 import json
 import uuid
 import datetime
+from models import storage
 
 
 class BaseModel:
@@ -17,6 +18,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new(self)
         else:
             for k, v in kwargs.items():
                 if k == '__class__':
@@ -33,6 +35,7 @@ class BaseModel:
         """This method updates the public instance attribute with the
         current date and time."""
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all the attributes of the class."""

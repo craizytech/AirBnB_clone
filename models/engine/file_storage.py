@@ -34,10 +34,9 @@ class FileStorage:
         """deserializes the JSON file to __objects only if file path exists"""
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
-                try:
-                    from models.base_model import BaseModel
-                    saved_dict = json.load(file)
-                    for k, v in saved_dict.items():
-                        FileStorage.__objects[k] = BaseModel(v)
-                except json.JSONDecodeError:
-                    pass
+                from models.base_model import BaseModel
+                saved_dict = json.load(file)
+                for obj in saved_dict.values():
+                    class_name = obj['__class__']
+                    del obj["__class__"]
+                    self.new(eval(class_name)(**obj))
