@@ -2,7 +2,7 @@
 """Console module of the HAirBnB module."""
 import cmd
 import json
-#from models.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -25,9 +25,18 @@ class HBNBCommand(cmd.Cmd):
         if line == '':
             print("** class name missing **")
         elif line == "BaseModel":
-            pass
+            new_object = BaseModel()
+            new_object.save()
+            print(new_object.id)
         else:
             print("** class doesn't exist **")
+    def do_show(self, line):
+        """ prints the string representation of an instance based on the
+        class name."""
+
+        print(hell)
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

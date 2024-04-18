@@ -31,7 +31,6 @@ class FileStorage:
             except json.JSONEncoder:
 
                 pass
-        print(dic_rep)
 
     def reload(self):
 
