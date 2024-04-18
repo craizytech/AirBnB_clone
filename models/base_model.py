@@ -7,11 +7,23 @@ import datetime
 
 class BaseModel:
     """This is the base class for the project."""
-    def __init__(self):
-        """Constructor method."""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+    def __init__(self, *args, **kwargs):
+        """Constructor method.
+        Args:
+            args (tuple): contains the variable num of args
+            kwargs (dict): contains the dictionary attributes of an instance
+        """
+        if kwargs == {}:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+        else:
+            for k, v in kwargs.items():
+                if k == '__class__':
+                    pass
+                if k == 'created_at' or k == 'updated_at':
+                    v = datetime.datetime.fromisoformat(v)
+                self.__dict__[k] = v
 
     def __str__(self):
         """Prints the representation of the instance."""
