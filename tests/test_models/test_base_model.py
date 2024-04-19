@@ -11,6 +11,7 @@ class TestBaseModel(unittest.TestCase):
         """sets up all the required items for objects to work."""
         self.obj1 = BaseModel()
         self.obj2 = BaseModel()
+        obj_dict = {"one":1, "two":2, "three":3}
 
     def test_uuid(self):
         """This method tests the id attribute."""
@@ -19,7 +20,7 @@ class TestBaseModel(unittest.TestCase):
         self.asserIsInstance(self.obj1.id, str)
         self.assertNotEqual(self.obj1.id, self.obj2.id)
 
-    def str_method(self):
+    def test_str_method(self):
         """Tests the str method."""
         self.assertEqual(str(self.obj1),\
                 f"[BaseModel] ({self.obj1.id}) {self.obj1.__dict__}")
