@@ -12,7 +12,12 @@ class TestFileStorage:
         """Sets up all the objects needed for testing"""
         f1_obj = FileStorage()
         f2_obj = FileStorage()
+        b1_obj = BaseModel()
 
+    def test_attributes(self):
+        """Tests all the attributes of the FileStorage."""
+        f
     def test_all(self):
         """tests the all method."""
-        self.assertIs(
+        f1_obj.__
+        self.assertIsInstance(
