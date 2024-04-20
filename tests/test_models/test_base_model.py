@@ -29,5 +29,6 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests the save method."""
+        initial_updated = self.obj1.updated_at
         self.obj1.save()
-        self.assertIsNot(self.obj1.updated_at, None)
+        self.assertNotEqual(self.obj1.updated_at, initial_updated)
