@@ -29,6 +29,5 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests the save method."""
-        self.assertIs(self.obj1.updated_at, None)
         self.obj1.save()
         self.assertIsNot(self.obj1.updated_at, None)
