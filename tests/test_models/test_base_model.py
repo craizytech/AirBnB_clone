@@ -17,7 +17,7 @@ class TestBaseModel(unittest.TestCase):
         """This method tests the id attribute."""
         self.assertIsInstance(self.obj1, BaseModel)
         self.assertTrue(hasattr(self.obj1, "id"))
-        self.asserIsInstance(self.obj1.id, str)
+        self.assertIsInstance(self.obj1.id, str)
         self.assertNotEqual(self.obj1.id, self.obj2.id)
 
     def test_str_method(self):
@@ -25,7 +25,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(str(self.obj1),\
                 f"[BaseModel] ({self.obj1.id}) {self.obj1.__dict__}")
         self.assertEqual(str(self.obj2),\
-                f"[BaseModel] ({self.obj1.id}) {self.obj1.__dict__}")
+                f"[BaseModel] ({self.obj2.id}) {self.obj2.__dict__}")
 
     def test_save(self):
         """Tests the save method."""
