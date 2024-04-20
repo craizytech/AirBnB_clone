@@ -14,10 +14,12 @@ class TestFileStorage:
         f2_obj = FileStorage()
         b1_obj = BaseModel()
 
+    def test_instance(self):
+        """Tests the instance of FileStorage."""
+        self.assertIsInstance(f1_obj, FileStorage)
+
     def test_attributes(self):
-        """Tests all the attributes of the FileStorage."""
-        f
-    def test_all(self):
-        """tests the all method."""
-        f1_obj.__
-        self.assertIsInstance(
+        """Tests the private class attributes of the class."""
+        with self.assertRaises(AttributeError):
+            f1_obj.file_path
+        self.assertIsEqual(f1_0bj_FileStorage__file_path, "file.json")
