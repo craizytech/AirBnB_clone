@@ -32,3 +32,9 @@ class TestBaseModel(unittest.TestCase):
         initial_updated = self.obj1.updated_at
         self.obj1.save()
         self.assertNotEqual(self.obj1.updated_at, initial_updated)
+
+    def test_to_dict(self):
+        """ Tests the to_dict() method in test_base_model."""
+        self.object_dict = self.obj1.to_dict().copy()
+        self.assertIsInstance(self.object_dict, dict)
+        self.assertIsInstance(self.object_dict['created_at'], str)
