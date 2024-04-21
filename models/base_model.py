@@ -28,7 +28,8 @@ class BaseModel:
 
     def __str__(self):
         """Prints the representation of the instance."""
-        return f"[BaseModel] ({self.id}) {self.__dict__}"
+        class_name = self.__class__.__name__
+        return f"[{class_name}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """This method updates the public instance attribute with the

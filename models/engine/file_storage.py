@@ -4,7 +4,6 @@ import json
 import os
 import os.path
 
-
 class FileStorage:
     """serializes(instances->JSONfile) && deserializes(JSONfile->instances)"""
 
@@ -36,6 +35,8 @@ class FileStorage:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
                 saved_dict = json.load(file)
                 for obj in saved_dict.values():
+                    from models.base_model import BaseModel
+                    from models.user import User
                     class_name = obj['__class__']
                     del obj["__class__"]
                     self.new(eval(class_name)(**obj))
