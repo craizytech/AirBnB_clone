@@ -41,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args) == 2:
             if args[0] in classes:
-                if f"BaseModel.{args[1]}" in FileStorage._FileStorage__objects:
+                if f"{args[0]}.{args[1]}" in FileStorage._FileStorage__objects:
                     print(FileStorage._FileStorage__objects\
                             [f"BaseModel.{args[1]}"])
                 else:
@@ -58,8 +58,8 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args) == 2:
             if args[0] in classes:
-                if f"BaseModel.{args[1]}" in FileStorage._FileStorage__objects:
-                    del(FileStorage._FileStorage__objects\
+                if f"BaseModel.{args[1]}" in storage._FileStorage__objects:
+                    del(storage._FileStorage__objects\
                             [f"BaseModel.{args[1]}"])
                     storage.save()
                 else:
@@ -90,9 +90,11 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args) == 4:
             if args[0] in classes:
-                if f"arg[0].{args[1]}" in FileStorage._FileStorage__objects:
-                    print(FileStorage._FileStorage__objects\
-                            [f"BaseModel.{args[1]}"])
+                if f"{args[0]}.{args[1]}" in storage._FileStorage__objects:
+                    saved_dict = {k: v.to_dict()\
+                                  for k, v in storage.all().items()}
+                    saved_dict[f"{args[0]}.{args[1]}"] = args[2]
+                    storage.save()
                 else:
                     print("** no instance found **")
             else:
@@ -103,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name is missing **")
         elif len(args) == 1:
             print("** instance id missing **")
-        elif len == 0:
+        elif len(args) == 0:
             print("** class name missing **")
             
 
