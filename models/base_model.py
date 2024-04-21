@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Base Class Module."""
-import json
 import uuid
 import datetime
 from models import storage
@@ -40,7 +39,7 @@ class BaseModel:
     def to_dict(self):
         """Returns a dictionary containing all the attributes of the class."""
         obj_dict = self.__dict__.copy()
-        obj_dict['__class__'] = BaseModel.__name__
+        obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = obj_dict['created_at'].isoformat()
         obj_dict['updated_at'] = obj_dict['updated_at'].isoformat()
         return obj_dict
