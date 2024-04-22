@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         elif len(args) == 0:
-            print("** class name is missing **")
+            print("** class name missing **")
     
     def do_all(self, line):
         """Prints all string representations based or not on class name"""
@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
         elif len(args) == 3:
-            print("** value is missing **")
+            print("** value missing **")
         elif len(args) == 2:
             print("** attribute name missing **")
         elif len(args) == 1:
