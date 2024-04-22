@@ -30,9 +30,9 @@ class HBNBCommand(cmd.Cmd):
             new_object.save()
             print(new_object.id)
         elif line == '':
-            print("** class name is missing **")
+            print("** class name missing **")
         else:
-            print("** class name doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_show(self, line):
         """Print string representation of an instance based on class name and
@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** no instance found **")
             else:
-                print("** class doesn't exist")
+                print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
         elif len(args) == 0:
@@ -102,7 +102,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 3:
             print("** value is missing **")
         elif len(args) == 2:
-            print("** attribute name is missing **")
+            print("** attribute name missing **")
         elif len(args) == 1:
             print("** instance id missing **")
         elif len(args) == 0:
